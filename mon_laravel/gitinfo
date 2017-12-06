@@ -1,0 +1,14 @@
+PUSH :
+git add *
+git commit -m "le mesage a commit"
+git push -u origin master
+
+-------------------
+PUSH POUR LA PREMIERE FOIS UN PROJET :
+
+git init
+git clone <server>
+git add *
+git commit -m "mon message"
+git remote add origin <url>
+git push -u origin master
