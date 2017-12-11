@@ -70,6 +70,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+	   
         </style>
     </head>
     <body>
@@ -90,18 +91,7 @@
                     Application Parking
                 </div>
 
-                <div class="links">
-  		    <h1> Connexion </h1>
-		    <p> Utilisateur  </p>
-		    <input type="text">
-		    <br>
-		    <br>
-		    <p> Mot de passe </p>
-		    <input type="password">
-		    <br>
-		    <br>
-		    <input type="submit" name="nom" value="Valider">
-                </div>
+  		    <p>G & B </p>
             </div>
         </div>
     </body>
