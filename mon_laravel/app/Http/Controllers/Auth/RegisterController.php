@@ -6,6 +6,7 @@ use App\User;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Auth;
 
 class RegisterController extends Controller
 {
@@ -48,9 +49,10 @@ class RegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'name' => 'required|string|max:255',
+            'nom' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+	    'tel' => 'required|numeric|',
         ]);
     }
 
@@ -61,11 +63,18 @@ class RegisterController extends Controller
      * @return \App\User
      */
     protected function create(array $data)
-    {
+    {	
+	
         return User::create([
-            'name' => $data['name'],
+            'nom' => $data['nom'],
+	    'prenom' => $data['prenom'],
             'email' => $data['email'],
+	    'tel' => $data['tel'],
+	    'login' => $data['login'],
             'password' => bcrypt($data['password']),
+          
         ]);
+	//DB::table('users')->where('id' == 1)->update(['admin'=>1]);
+	
     }
 }
