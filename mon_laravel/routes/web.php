@@ -19,11 +19,12 @@ Route::get('/TEST', function () {
     return view('test');
 });
 
-Route::get('/EditMembres', function () {
-    return view('editMembres');
-});
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
+
+Route::get('/EditMembres', 'controllerMembres@affMembres');
+
+Route::get('/EditMembres/{user}', 'controllerMembres@delMembres')->name('editmembres');
 
