@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"> BIenvenue vous etes un utilisateur !</div>
+                <div class="panel-heading"> Benvenue vous etes un utilisateur !</div>
 
                 <div class="panel-body">
                     @if (session('status'))
