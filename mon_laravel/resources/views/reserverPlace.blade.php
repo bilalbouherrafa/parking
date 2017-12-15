@@ -5,7 +5,7 @@
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <div class="panel panel-default">
-                <div class="panel-heading"> Benvenue sur l'espace utilisateur !</div>
+                <div class="panel-heading"> Reservation de place</div>
 
                 <div class="panel-body">
                     @if (session('status'))
@@ -13,12 +13,16 @@
                             {{ session('status') }}
                         </div>
                     @endif
+		<form class="form-horizontal" method="POST" action="{{ route('reserverPlace') }}">
+				{{ csrf_field() }}
+				<input type="hidden" name="method" value="PUT">     
 
-                    <div class="panel-body">
-                  	<UL TYPE="circle">
-				<LI><a class="btn btn-link" href="/ReserverPlace">Reserver une place</a>
-			</UL>
-                </div>
+				<button type="submit" class="btn btn-primary" value="Submit Button">
+		                       Reserver
+		                </button>
+
+			</form>
+		
                 </div>
             </div>
         </div>

@@ -38,3 +38,7 @@ Route::post('/CreerPlaces', 'controllerPlaces@creerPlaces')->name('creerPlaces')
 
 Route::get('/SupprimerPlace/{place}', 'controllerPlaces@supprimerPlaces')->name('supprimerPlaces');
 
+Route::get('/ReserverPlace/', 'controllerPlaces@preresPlace')->name('preresPlace');
+
+Route::post('/ReserveePlace/', 'controllerPlaces@reserverPlace')->name('reserverPlace');
+

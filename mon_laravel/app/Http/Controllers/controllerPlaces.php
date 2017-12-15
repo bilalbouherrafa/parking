@@ -47,6 +47,20 @@ class controllerPlaces extends Controller
 		}
 
 	}
+
+	public function preresPlace(){
+	
+		
+		return view('reserverPlace');
+	
+		
+	}
+
+	public function reserverPlace(){
+		dd('hello');
+	}
+
+	
 	public function index()
 	{
 	//
