@@ -18,7 +18,8 @@
 				<td> Telephone </td>
 				<td> Email </td>
 				<td> Rang </td>
-			
+				<td> </td>
+				<td> </td>
 			</tr>
 
 			
@@ -29,7 +30,8 @@
 				<td>0{{ $user->tel }}</td>
 				<td>{{ $user->email }}</td>
 				<td>{{ $user->rang }}</td>
-				<td><a href="{{ route('editmembres', $user->id) }}"><u> Supprimer </u></a></td>
+				<td><a href="{{ route('editmembresDel', $user->id) }}"><u> Supprimer </u></a></td>
+				<td><a href="{{ route('editmembrespreMdp', $user->id) }}"><u> Modifier MdP </u></a></td>
 
 			</tr> 
 			@endforeach

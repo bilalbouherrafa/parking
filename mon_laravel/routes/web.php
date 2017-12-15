@@ -24,7 +24,15 @@ Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
-Route::get('/EditMembres', 'controllerMembres@affMembres');
+Route::get('/EditMembres', 'controllerMembres@affMembres')->name('editMembres');
 
-Route::get('/EditMembres/{user}', 'controllerMembres@delMembres')->name('editmembres');
+Route::get('/SupprimerMembres/{user}', 'controllerMembres@delMembres')->name('editmembresDel');
+
+Route::get('/premdpMembre/{user}', 'controllerMembres@premdpMembres')->name('editmembrespreMdp');
+
+Route::post('/EditedMdp/{user}', 'controllerMembres@mdpMembres')->name('editmembresMdp');
+
+Route::get('/EditPlaces', 'controllerPlaces@affPlaces')->name('editPlaces');
+
+Route::post('/CreerPlaces', 'controllerPlaces@creerPlaces')->name('creerPlaces');
 
