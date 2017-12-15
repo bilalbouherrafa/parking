@@ -24,8 +24,7 @@ class controllerPlaces extends Controller
 		
 		//$this -> validate($request, ['nbp'=>'required|numeric|min:1',]);
 		$nbp = $request->input('nbp');
-		$cmp = DB::table('place')->count();
-		
+		$cmp = DB::table('place')->max('numPlace');
 		for($i = 1 ; $i <= $nbp ; $i++){
 			$cmp++;
 			DB::table('place')->insert(['numPlace' => $cmp]);
@@ -33,6 +32,19 @@ class controllerPlaces extends Controller
 		
 		return redirect()->route('editPlaces', 'places');
 		
+
+	}
+
+	public function supprimerPlaces($idPlace){
+	
+		$place = DB::table('place')->get()->where('idPlace', $idPlace)->first();
+
+		if($place)
+		{
+			$place = DB::table('place')->where('idPlace', '=', $idPlace)->delete();
+			$places = DB::table('place')->get();
+			return view('editPlaces', compact('places'));
+		}
 
 	}
 	public function index()

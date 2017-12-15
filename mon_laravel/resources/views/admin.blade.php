@@ -20,8 +20,8 @@
 		<div class="panel-body">
                   	<UL TYPE="circle">
 				<LI><a class="btn btn-link" href="/EditMembres">Editer les membres</a>
-				<br/><LI><a class="btn btn-link" href="/EditListe">Editer la liste d'attente</a>
 				<br/><LI><a class="btn btn-link" href="/EditPlaces">Editer des Places</a>
+				<br/><LI><a>Editer la liste d'attente</a>
 				<br/><LI><a>Liste d'attente</a>
 				<br/><LI><a>Attribuer une place</a>
 				<br/><LI><a>Historique</a>

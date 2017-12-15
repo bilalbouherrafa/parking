@@ -24,7 +24,7 @@
 			<tr> 
 				<td>{{ $place->idPlace }}</td>
 				<td>{{ $place->numPlace }}</td>
-				<td> </td>
+				<td><a href="{{ route('supprimerPlaces', $place->idPlace) }}"><u> Supprimer </u></a></td>
 				<td> </td>
 
 			</tr> 

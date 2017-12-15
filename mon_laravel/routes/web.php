@@ -36,3 +36,5 @@ Route::get('/EditPlaces', 'controllerPlaces@affPlaces')->name('editPlaces');
 
 Route::post('/CreerPlaces', 'controllerPlaces@creerPlaces')->name('creerPlaces');
 
+Route::get('/SupprimerPlace/{place}', 'controllerPlaces@supprimerPlaces')->name('supprimerPlaces');
+
