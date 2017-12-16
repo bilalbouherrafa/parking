@@ -48,87 +48,46 @@ class controllerPlaces extends Controller
 
 	}
 
-	public function preresPlace(){
+	public function premodifDatePlace($idPlace){
 	
+		$place = DB::table('place')->get()->where('idPlace',$idPlace)->first();
+		return view('modifdatePlace', compact('place'));
+
+	}
+
+	public function modifDatePlace(Request $request, $idPlace){
+	
+		//$this -> validate($request, ['date'=>'required',]);
+
 		
-		return view('reserverPlace');
-	
+		$newDate = ($request->input('datef'));
+		DB::table('reserver')->where('idPlace', '=', $idPlace)->update(['finPeriode' => $newDate]);
+		//$place -> update(['finPeriode'=> ($request->input(datef))]);
+		//$places = DB::table('place')->get();
+		$places = DB::table('place')->get();
+		return view('editPlaces', compact('places'));
+		
 		
 	}
 
-	public function reserverPlace(){
-		dd('hello');
+
+	public function preattribuerPlace($idPlace){
+
+		$place = DB::table('place')->get()->where('idPlace',$idPlace)->first();
+		return view('attribuerPlace', compact('place'));
+
 	}
 
-	
-	public function index()
-	{
-	//
-	}
+	public function attribuerPlace(Request $request, $idPlace){
+		
+		$newDated = ($request->input('dated'));
+		$newDatef = ($request->input('datef'));
+		$newid = ($request->input('iduser'));
+		DB::table('reserver')->insert(['finPeriode' => $newDatef, 'idUser' => $newid, 'idPlace' => $idPlace, 'DebutPeriode' => $newDated]);
+		DB::table('place')->where('idPlace', '=', $idPlace)->update(['etat' => 1]);
+		$places = DB::table('place')->get();
+		return view('editPlaces', compact('places'));
 
-	/**
-	* Show the form for creating a new resource.
-	*
-	* @return \Illuminate\Http\Response
-	*/
-	public function create()
-	{
-	//
-	}
 
-	/**
-	* Store a newly created resource in storage.
-	*
-	* @param  \Illuminate\Http\Request  $request
-	* @return \Illuminate\Http\Response
-	*/
-	public function store(Request $request)
-	{
-	//
-	}
-
-	/**
-	* Display the specified resource.
-	*
-	* @param  int  $id
-	* @return \Illuminate\Http\Response
-	*/
-	public function show($id)
-	{
-	//
-	}
-
-	/**
-	* Show the form for editing the specified resource.
-	*
-	* @param  int  $id
-	* @return \Illuminate\Http\Response
-	*/
-	public function edit($id)
-	{
-	//
-	}
-
-	/**
-	* Update the specified resource in storage.
-	*
-	* @param  \Illuminate\Http\Request  $request
-	* @param  int  $id
-	* @return \Illuminate\Http\Response
-	*/
-	public function update(Request $request, $id)
-	{
-	//
-	}
-
-	/**
-	* Remove the specified resource from storage.
-	*
-	* @param  int  $id
-	* @return \Illuminate\Http\Response
-	*/
-	public function destroy($id)
-	{
-	//
 	}
 }

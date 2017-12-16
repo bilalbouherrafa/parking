@@ -15,6 +15,11 @@ class controllerMembres extends Controller
 		return view('editMembres', compact('users'));
 	}
 
+	function affListe(){
+	
+		$users = User::All()->SortBy('rang')->where('rang', '!=', NULL);
+		return view('editListe', compact('users'));
+	}
 	function delMembres($id){
 
 		$user = User::findOrFail($id);

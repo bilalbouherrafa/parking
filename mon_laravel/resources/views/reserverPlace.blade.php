@@ -13,14 +13,25 @@
                             {{ session('status') }}
                         </div>
                     @endif
+
+			
+
 		<form class="form-horizontal" method="POST" action="{{ route('reserverPlace') }}">
 				{{ csrf_field() }}
 				<input type="hidden" name="method" value="PUT">     
-
-				<button type="submit" class="btn btn-primary" value="Submit Button">
-		                       Reserver
-		                </button>
-
+				<center>
+				@if($message == '')
+					<button type="submit" class="btn btn-primary" value="Submit Button">
+				               Reserver
+				        </button>
+				
+				@else
+					{{ $message }}<br></br>
+					Votre numéro est : {{ $numPlace }}
+					<br></br>
+					<a href="/home"> Retour à la page d'accueil </a>
+				@endif
+				</center>
 			</form>
 		
                 </div>

@@ -15,6 +15,7 @@
 				<tr> 
 					<td> idPlace</td>
 					<td> numPlace </td>
+					<td> Etat </td>
 					<td> </td>
 					<td> </td>
 				</tr>
@@ -24,8 +25,24 @@
 			<tr> 
 				<td>{{ $place->idPlace }}</td>
 				<td>{{ $place->numPlace }}</td>
-				<td><a href="{{ route('supprimerPlaces', $place->idPlace) }}"><u> Supprimer </u></a></td>
-				<td> </td>
+				
+				@if($place->etat)
+					@php
+					$statut = 'Reservée'
+					@endphp
+				@else
+					@php
+					$statut = 'Libre'
+					@endphp
+				@endif
+
+				<td>{{ $statut }}</td>
+				<td> <a href="{{ route('supprimerPlaces', $place->idPlace) }}"><u> Supprimer </u></a> </td>
+				@if($statut == 'Reservée')
+				<td> <a href="{{ route('premodifDatePlaces', $place->idPlace) }}"><u> Modifier Date </u></a> </td>
+				@else
+				<td> <a href="{{ route('preattribuerPlaces', $place->idPlace) }}"><u> Attribuer </u></a> </td></td>
+				@endif
 
 			</tr> 
 			@endforeach

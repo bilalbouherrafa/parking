@@ -8,29 +8,29 @@
                 <div class="panel-heading"> <a href="{{ url('/home') }}">Menu</a> </div>
 
                 <div class="panel-body">
-		Editer la Liste d'attente :
+		Historique des reservations :
 		<br>
 		</br>
 			<table class="table">
 			<tr> 
-				<td> Rang </td>
-				<td> eMail </td>
 				<td> idUser </td>
-				<td> </td>
+				<td> numPlace </td>
+				<td> Début Reservation </td>
+				<td> Fin Reservation </td>
 			</tr>
 
 			
-			@foreach($users as $user)
+			@foreach($reservations as $reservation)
 			<tr> 
-				<td>{{ $user->rang }}</td>
-				<td>{{ $user->email }}</td>
-				<td>{{ $user->id }}</td>
-				<td><a><u> Modifier Rang </u></a></td>
+				<td>{{ $reservation->idUser }}</td>
+				<td>{{ $reservation->idPlace }}</td>
+				<td>{{ $reservation->DebutPeriode}}</td>
+				<td>{{ $reservation->finPeriode }}</td>
+				
 				
 			</tr> 
 			@endforeach
-				
-		        
+		
 		</table>
                 </div>
             </div>

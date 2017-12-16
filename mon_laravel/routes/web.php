@@ -38,7 +38,19 @@ Route::post('/CreerPlaces', 'controllerPlaces@creerPlaces')->name('creerPlaces')
 
 Route::get('/SupprimerPlace/{place}', 'controllerPlaces@supprimerPlaces')->name('supprimerPlaces');
 
-Route::get('/ReserverPlace/', 'controllerPlaces@preresPlace')->name('preresPlace');
+Route::get('/ReserverPlace/', 'controllerReservations@preresPlace')->name('preresPlace');
 
-Route::post('/ReserveePlace/', 'controllerPlaces@reserverPlace')->name('reserverPlace');
+Route::post('/ReserveePlace/', 'controllerReservations@reserverPlace')->name('reserverPlace');
+
+Route::get('/premodifDatePlaces/{place}', 'controllerPlaces@premodifDatePlace')->name('premodifDatePlaces');
+
+Route::post('/modifDatePlace/{place}', 'controllerPlaces@modifDatePlace')->name('modifDatePlace');
+
+Route::get('/preattribuerPlaces/{place}', 'controllerPlaces@preattribuerPlace')->name('preattribuerPlaces');
+
+Route::post('/attribuerPlace/{place}', 'controllerPlaces@attribuerPlace')->name('attribuerPlace');
+
+Route::get('/EditListe', 'controllerMembres@affListe')->name('editListe');
+
+Route::get('/Historique', 'controllerReservations@affHistorique')->name('historique');
 
