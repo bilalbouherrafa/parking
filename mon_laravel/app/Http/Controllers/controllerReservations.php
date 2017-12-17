@@ -59,8 +59,8 @@ class controllerReservations extends Controller
 		}
 			
 		else{
-			$possible = DB::table('place')->inRandomOrder()->where('etat', '=', 0)->first();
-			$numPlace = $possible->numPlace;
+			$possible = DB::table('reserver')->get()->where('idUser', '=', $id)->first();
+			$numPlace = $possible->idPlace;
 			$message = 'Vous avez déja reserver une place';
 			return view('reserverPlace', compact('message','numPlace'));
 		}

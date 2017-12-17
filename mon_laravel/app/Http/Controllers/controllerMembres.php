@@ -20,6 +20,23 @@ class controllerMembres extends Controller
 		$users = User::All()->SortBy('rang')->where('rang', '!=', NULL);
 		return view('editListe', compact('users'));
 	}
+	
+	function affPlace(){
+		$id = auth()->user()->id;
+		$possible = DB::table('reserver')->get()->where('idUser', '=', $id)->first();
+		$numPlace = $possible->idPlace;
+		$message = 'Vous avez déja reserver une place';
+		return view('reserverPlace', compact('message','numPlace'));
+	}
+
+	function affRang(){
+		$id = auth()->user()->id;
+		$possible = DB::table('users')->get()->where('id', '=', $id)->first();
+		$rang = $possible->rang;
+		$message = 'Votre rang est ';
+		return view('afficherRang', compact('message','rang'));
+	}
+
 	function delMembres($id){
 
 		$user = User::findOrFail($id);

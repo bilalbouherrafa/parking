@@ -62,3 +62,8 @@ Route::get('/ModificationRang/{user}', 'controllerMembres@premodifRang')->name('
 
 Route::post('/ModifRang/{user}', 'controllerMembres@modifRang')->name('modifRang');
 
+Route::get('/AfficherPlace', 'controllerMembres@affPlace')->name('affPlace');
+
+Route::get('/AfficherRang', 'controllerMembres@affRang')->name('affRang');
+
+
