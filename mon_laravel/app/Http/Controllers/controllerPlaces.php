@@ -3,8 +3,11 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\User;
 use DB;
+use App\User;
+
+
+
 class controllerPlaces extends Controller
 {
 	/**
@@ -16,8 +19,14 @@ class controllerPlaces extends Controller
 	public function affPlaces(){
 	
 		$places = DB::table('place')->get();
-		return view('editPlaces', compact('places'));
-
+		/*$join = DB::table('users')
+			->join('reserver','users.id','=','reserver.idUser')
+			->join('place','reserver.idPlace','=','place.numPlace')
+			->select('*')
+			->get();*/
+		$join = '';
+		return view('editPlaces', compact('places','join'));
+		
 	}
 
 	public function creerPlaces(Request $request){
@@ -90,6 +99,7 @@ class controllerPlaces extends Controller
 		$newid = ($request->input('iduser'));
 		DB::table('reserver')->insert(['finPeriode' => $newDatef, 'idUser' => $newid, 'idPlace' => $idPlace, 'DebutPeriode' => $newDated]);
 		DB::table('place')->where('idPlace', '=', $idPlace)->update(['etat' => 1]);
+		DB::table('users')->where('id', '=', $newid)->update(['rang' => NULL]);
 		$places = DB::table('place')->get();
 		return view('editPlaces', compact('places'));
 

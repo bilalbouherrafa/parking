@@ -8,9 +8,8 @@
                 <div class="panel-heading"> <a href="{{ url('/home') }}">Menu</a> </div>
 
                 <div class="panel-body">
-		Editer des places :
-		<br>
-		</br>
+		<center> <p font-size="111 px"><b> Editer des places : </b></p> </center>
+		
 			<table class="table">
 				<tr> 
 					<td> idPlace</td>
@@ -18,6 +17,7 @@
 					<td> Etat </td>
 					<td> </td>
 					<td> </td>
+					
 				</tr>
 
 			
@@ -40,8 +40,10 @@
 				<td> <a href="{{ route('supprimerPlaces', $place->idPlace) }}"><u> Supprimer </u></a> </td>
 				@if($statut == 'Reservée')
 				<td> <a href="{{ route('premodifDatePlaces', $place->idPlace) }}"><u> Modifier Date </u></a> </td>
+				<td> {{ $join }}
 				@else
 				<td> <a href="{{ route('preattribuerPlaces', $place->idPlace) }}"><u> Attribuer </u></a> </td></td>
+				
 				@endif
 
 			</tr> 
