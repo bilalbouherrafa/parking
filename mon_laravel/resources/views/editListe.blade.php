@@ -17,6 +17,7 @@
 				<td> eMail </td>
 				<td> idUser </td>
 				<td> </td>
+				<td> </td>
 			</tr>
 
 			
@@ -25,8 +26,12 @@
 				<td>{{ $user->rang }}</td>
 				<td>{{ $user->email }}</td>
 				<td>{{ $user->id }}</td>
-				<td><a><u> Modifier Rang </u></a></td>
-				
+				<td><a href="{{ route('premodifRang', $user->id) }}"><u> Modifier Rang </u></a></td>
+				@if($user->rang == 1)
+					<td><a href="{{ route('prefileattribuerPlaces', $user->id) }}"><u> Attribuer une Place </u></a></td>
+				@else
+					<td></td>
+				@endif
 			</tr> 
 			@endforeach
 				

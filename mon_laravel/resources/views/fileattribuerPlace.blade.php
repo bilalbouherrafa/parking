@@ -11,7 +11,7 @@
                     
 			Insérer les paramètres :
 			<br></br>
-			<form class="form-horizontal" method="POST" action="{{ route('attribuerPlace', $place->idPlace) }}">
+			<form class="form-horizontal" method="POST" action="{{ route('fileattribuerPlace', $user->id) }}">
 				{{ csrf_field() }}
 				<input type="hidden" name="method" value="PUT">
 
@@ -19,7 +19,7 @@
 				    <label for="dated" class="col-md-4 control-label">Date de début :</label>
 
 		                    <div class="col-md-6">
-		                        <input id="dated" type="date"  name="dated" size="7" required>
+		                        <input id="dated" type="date"  name="dated" size="8" required>
 		                    </div>
 		                </div>
 
@@ -29,22 +29,25 @@
 				    <label for="datef" class="col-md-4 control-label">Date de fin :</label>
 
 		                    <div class="col-md-6">
-		                        <input id="datef" type="date"  name="datef" size="7" required>
+		                        <input id="datef" type="date"  name="datef" size="8" required>
 		                    </div>
 		                </div>
 				
 				<br></br>
 
-				<div class="form-group{{ $errors->has('iduser') ? ' has-error' : '' }}">
-				    <label for="iduser" class="col-md-4 control-label">ID de l'utilisateur :</label>
-				@php
-					$test = $firstrang
-				@endphp
-		                    <div class="col-md-6">
-		                        <input id="iduser" type="integer"  name="iduser" size="1" value= "{{ $test }}" required>
-		                    </div>
-		                </div>
+				<div class="form-group{{ $errors->has('idplace') ? ' has-error' : '' }}">
+				    <label for="idplace" class="col-md-4 control-label">ID des places libres :</label>
 
+				    <SELECT name="idplace" size="1">
+					@foreach($placeslibres as $place) 
+					<OPTION>{{ $place->idPlace }}
+					@endforeach
+				    </SELECT>
+		                </div>
+				
+				
+					
+				
 				<center>
 				<button type="submit" class="btn btn-primary" value="Submit Button">
 		                       Attribuer

@@ -74,7 +74,12 @@ class controllerPlaces extends Controller
 	public function preattribuerPlace($idPlace){
 
 		$place = DB::table('place')->get()->where('idPlace',$idPlace)->first();
-		return view('attribuerPlace', compact('place'));
+		$idfirstrang = DB::table('users')->get()->where('rang',1)->first();
+		if($idfirstrang != NULL)
+			$firstrang = $idfirstrang->id;
+		else
+			$firstrang = '';
+		return view('attribuerPlace', compact('place','firstrang'));
 
 	}
 
@@ -87,6 +92,31 @@ class controllerPlaces extends Controller
 		DB::table('place')->where('idPlace', '=', $idPlace)->update(['etat' => 1]);
 		$places = DB::table('place')->get();
 		return view('editPlaces', compact('places'));
+
+
+	}
+
+	public function prefileattribuerPlace($id){
+
+		$user = DB::table('users')->get()->where('id',$id)->first();
+		$placeslibres = DB::table('place')->get()->where('etat',0);
+		return view('fileattribuerPlace', compact('placeslibres'), compact('user'));
+
+	}
+
+	public function fileattribuerPlace(Request $request, $id){
+		
+		$newDated = ($request->input('dated'));
+		$newDatef = ($request->input('datef'));
+		$newPlace = ($request->input('idplace'));
+		DB::table('reserver')->insert(['finPeriode' => $newDatef, 'idUser' => $id, 'idPlace' => $newPlace, 'DebutPeriode' => $newDated]);
+		DB::table('place')->where('idPlace', '=', $newPlace)->update(['etat' => 1]);
+		DB::table('users')->where('id','=',$id)->update(['rang' => NULL]);
+		
+		DB::table('users')->where('rang','!=',NULL)->decrement('rang');
+		
+		$users = DB::table('users')->OrderBy('rang')->get()->where('rang', '!=', NULL);
+		return view('editListe', compact('users'));
 
 
 	}

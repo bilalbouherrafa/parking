@@ -53,4 +53,50 @@ class controllerMembres extends Controller
 		
 
 	}
+
+	function premodifRang($id){
+	
+		$user = DB::table('users')->get()->where('id',$id)->first();
+		$message = '';
+		return view('modifRang', compact('user','message'));
+	
+		
+	}
+
+	function modifRang(Request $request, $id){
+		
+		$newRang = ($request->input('rang'));
+		$user = DB::table('users')->get()->where('id',$id)->first();
+		$userexistant = DB::table('users')->get()->where('rang',$newRang)->first();
+		if($userexistant == NULL){
+			if($newRang == 0){
+				DB::table('users')->where('id', '=', $id)->update(['rang' => NULL]);
+				$users = DB::table('users')->OrderBy('rang')->get()->where('rang', '!=', NULL);
+				$message = '';
+				return view('editListe', compact('users','message'));
+			}
+			else if($newRang < 0){
+				$message = 'Vous ne pouvez pas attribué ce numéro de rang, car il est négatif';
+				$user = DB::table('users')->get()->where('id',$id)->first();
+				return view('modifRang', compact('user','message'));
+			}
+			else{
+				DB::table('users')->where('id', '=', $id)->update(['rang' => $newRang]);
+				$users = DB::table('users')->OrderBy('rang')->get()->where('rang', '!=', NULL);
+				$message = '';
+				return view('editListe', compact('users','message'));
+			}
+		}
+		else{
+			$message = 'Vous ne pouvez pas attribué ce numéro de rang, car il est déja attribué à un autre utilisateur';
+			$user = DB::table('users')->get()->where('id',$id)->first();
+			return view('modifRang', compact('user','message'));
+		}
+			
+
+
+		
+		
+
+	}
 }

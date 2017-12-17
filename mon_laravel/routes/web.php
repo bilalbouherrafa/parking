@@ -50,7 +50,15 @@ Route::get('/preattribuerPlaces/{place}', 'controllerPlaces@preattribuerPlace')-
 
 Route::post('/attribuerPlace/{place}', 'controllerPlaces@attribuerPlace')->name('attribuerPlace');
 
+Route::get('/prefileattribuerPlaces/{user}', 'controllerPlaces@prefileattribuerPlace')->name('prefileattribuerPlaces');
+
+Route::post('/fileattribuerPlace/{user}', 'controllerPlaces@fileattribuerPlace')->name('fileattribuerPlace');
+
 Route::get('/EditListe', 'controllerMembres@affListe')->name('editListe');
 
 Route::get('/Historique', 'controllerReservations@affHistorique')->name('historique');
+
+Route::get('/ModificationRang/{user}', 'controllerMembres@premodifRang')->name('premodifRang');
+
+Route::post('/ModifRang/{user}', 'controllerMembres@modifRang')->name('modifRang');
 
